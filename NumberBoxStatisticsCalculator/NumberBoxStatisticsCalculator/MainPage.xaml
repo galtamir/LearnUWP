@@ -9,6 +9,50 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
+        <local:InputPanel x:Name="InputPanel" Size="7"/>
+
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock FontSize="50" HorizontalAlignment="Center">
+                    <LineBreak/>
+                    <Bold><Underline>Statistics</Underline></Bold>
+                    <LineBreak/>
+                </TextBlock>
+
+                <TextBlock FontSize="43" Margin="10,0,0,0">
+                    <Run>Average: </Run>
+                    <Run Text="{x:Bind InputPanel.Average , Mode=OneWay}"/>
+                    <LineBreak/>
+                    <Run>Medean: </Run>
+                    <Run Text="{x:Bind InputPanel.Medean , Mode=OneWay}"/>
+                    <LineBreak/>
+                </TextBlock>
+
+            </StackPanel>
+            <Grid Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        Click="CalculateButtonClicked">
+                    Calculate
+                </Button>
+                <Button Grid.Column="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        Click="ClearButtonClicked">
+                    Clear
+                </Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

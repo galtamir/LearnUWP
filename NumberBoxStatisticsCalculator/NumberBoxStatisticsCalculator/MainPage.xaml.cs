@@ -25,6 +25,22 @@ namespace NumberBoxStatisticsCalculator
         public MainPage()
         {
             this.InitializeComponent();
+
+        }
+
+        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            CalculateButtonClicked(null, null);
+        }
+
+        private void ClearButtonClicked(object sender, RoutedEventArgs e)
+        {
+            InputPanel.Clear();
+        }
+
+        private void CalculateButtonClicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
