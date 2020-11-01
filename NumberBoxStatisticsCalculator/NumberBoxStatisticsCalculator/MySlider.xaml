@@ -21,12 +21,11 @@
             <TextBlock Text="{x:Bind Header}" FontSize="34" VerticalAlignment="Center"/>
 
             <Slider x:Name="InternalSlider" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" TickFrequency="10" />
-            <Grid Grid.Column="2">
-                <muxc:NumberBox Value="{x:Bind InternalSlider.Value , Mode=TwoWay}" 
+            
+            <muxc:NumberBox Grid.Column="2" Value="{x:Bind InternalSlider.Value , Mode=TwoWay}" 
                                 SpinButtonPlacementMode="Compact"
-                                PlaceholderText="1 + 2^2" AcceptsExpression="True"
+                                AcceptsExpression="True"
                                 VerticalAlignment="Center" />
-            </Grid>
 
         </Grid>
     </Border>

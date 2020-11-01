@@ -21,7 +21,7 @@ namespace NumberBoxStatisticsCalculator
     public sealed partial class InputPanel : UserControl
     {
         private readonly List<MySlider> sliders;
-
+        
         public int Size
         {
             get { return (int)GetValue(SizeProperty); }
@@ -93,16 +93,6 @@ namespace NumberBoxStatisticsCalculator
             }
         }
 
-        private double average()
-        {
-            return sliders.Select(x => x.Value).Average();
-        }
-
-        private double median()
-        {
-            return sliders.Select(x => x.Value).OrderBy(x => x).ElementAt(Size / 2);
-        }
-
         private void AddInput()
         {
             InputGrid.RowDefinitions.Add(new RowDefinition());
@@ -119,7 +109,7 @@ namespace NumberBoxStatisticsCalculator
         {
             if (Size > 0)
             {
-                Average = sliders.Average(x => x.Value);
+                Average = sliders.Average(slider => slider.Value);
                 Medean = sliders.Select(x => x.Value).OrderBy(x => x).ElementAt(Size / 2);
             }
             else

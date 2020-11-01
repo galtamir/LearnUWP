@@ -14,8 +14,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Controls;
 
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-
 namespace NumberBoxStatisticsCalculator
 {
     public sealed partial class MySlider : UserControl
@@ -34,20 +32,10 @@ namespace NumberBoxStatisticsCalculator
             remove { InternalSlider.ValueChanged -= value; }
         }
 
-
         public MySlider()
         {
             this.InitializeComponent();
         }
 
-        private void UpButtonClicked(object sender, RoutedEventArgs e)
-        {
-            InternalSlider.Value++;
-        }
-
-        private void DownButtonClicked(object sender, RoutedEventArgs e)
-        {
-            InternalSlider.Value--;
-        }
     }
 }
