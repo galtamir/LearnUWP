@@ -1,0 +1,36 @@
+﻿<UserControl
+    x:Class="BasicStatistics.InputPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BasicStatistics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Content="+" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                    Margin="2,2,2,2"
+                    Click="AddInputCleacked" />
+            <Button Grid.Column="2" Content="-" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                    Margin="2,2,2,2"
+                    Click="RemoveInputCleacked" />
+        </Grid>
+        <Grid x:Name="InputGrid" Grid.Row="1" Padding="30,10,30,10" Background="Honeydew"/>
+
+    </Grid>
+</UserControl>
