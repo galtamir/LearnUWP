@@ -1,0 +1,7 @@
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="114" width="114" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 114 114">
+ <g transform="translate(-322.047 -462.181)">
+  <rect stroke-linejoin="round" rx="8" ry="8" height="108" width="108" stroke="#000" y="465.181" x="325.047" stroke-width="6" fill="none"/>
+  <circle cx="-546.181" transform="rotate(-90)" cy="406.047" r="11"/>
+  <circle cx="-492.181" transform="rotate(-90)" cy="352.047" r="11"/>
+ </g>
+</svg>
