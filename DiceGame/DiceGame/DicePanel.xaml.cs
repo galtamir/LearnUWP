@@ -39,12 +39,18 @@ namespace DiceGame
             dices = new List<Dice>();
         }
 
-        public void Roll()
+        public DiceResult Roll()
         {
             foreach(var dice in dices)
             {
                 dice.Roll();
             }
+            return new DiceResult 
+            { 
+                Sum = dices.Sum(x => x.Value), 
+                Average = dices.Average(x=>x.Value), 
+                NumberOfDice = dices.Count
+            };
         }
 
         private void UpdateNumberOfDice(int oldValue, int newValue)

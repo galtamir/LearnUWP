@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.RemoteDesktop;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,6 +26,14 @@ namespace DiceGame
     {
         public IEnumerable<int> NumberOfDiceSource { get; } = Enumerable.Range(1, 6);
 
+        private ObservableCollection<DiceResult> _results = new ObservableCollection<DiceResult>();
+        
+        public ObservableCollection<DiceResult> Results
+        {
+            get { return this._results; }
+        }
+
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -31,15 +41,23 @@ namespace DiceGame
 
         private void Roll(object sender, RoutedEventArgs e)
         {
-            Dices.Roll();
+            Results.Add(Dices.Roll());
+        }
+        
+        public string PrintLast(ObservableCollection<DiceResult> dices)
+        {
+            if (dices.Any())
+            {
+                return dices.Last().ToString();
+            }
+            return "";
         }
 
-        private void ComboSubmitted(ComboBox sender, ComboBoxTextSubmittedEventArgs args)
+        public int SelectedToInt(object selected)
         {
-            if(int.TryParse(args.Text, out int resolt))
-            {
-                Dices.NumberOfDice = resolt;
-            }
+            if (selected == null)
+                return 0;
+            return (int)selected;
         }
     }
 }

@@ -9,9 +9,9 @@
     d:DesignHeight="108"
     d:DesignWidth="108">
 
-    <Grid Height="108" Width="108">
+    <Grid>
 
-        <Image>
+        <Image Stretch="Fill">
             <Image.Source>
                 <SvgImageSource UriSource="{x:Bind NumberToBitmap(Value), Mode=OneWay}" />
             </Image.Source>

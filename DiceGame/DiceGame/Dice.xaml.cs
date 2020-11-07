@@ -59,7 +59,7 @@ namespace DiceGame
 
         public void Roll()
         {
-            Value = _random.Next(MaxDiceValue) + 1;
+            Value = _random.Next(1,MaxDiceValue + 1);
         }
     }
 }
