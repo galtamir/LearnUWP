@@ -67,15 +67,20 @@ namespace DiceGame
 
         private void AddDice()
         {
-            dices.Add(new Dice());
-            MainPanel.Children.Add(dices.Last());
+            var dice = new Dice { VerticalAlignment = VerticalAlignment.Center , HorizontalAlignment = HorizontalAlignment.Center };
+            MainPanel.Children.Add(dice);
+            MainPanel.ColumnDefinitions.Add(new ColumnDefinition());
+            Grid.SetColumn(dice, dices.Count);
+            dices.Add(dice);
+            
         }
 
         private void RemoveDice()
         {
             var toRemove = dices.Last();
-            dices.Remove(toRemove);
             MainPanel.Children.Remove(toRemove);
+            dices.Remove(toRemove);
+            MainPanel.ColumnDefinitions.Remove(MainPanel.ColumnDefinitions.Last());
         }
     }
 }
