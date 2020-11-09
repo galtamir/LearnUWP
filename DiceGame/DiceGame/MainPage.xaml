@@ -12,16 +12,16 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="AntiqueWhite" Padding="10,10,10,10">
+        <StackPanel Background="AntiqueWhite" Padding="20,20,20,20">
 
             <ComboBox Height="80" Width="120" FontSize="40" ItemsSource="{x:Bind NumberOfDiceSource}" 
                       x:Name="NumberOfDiceSelection" 
                       SelectedIndex="1"
                       HorizontalAlignment="Right"  />
-            <local:DicePanel x:Name="Dices" Height="200" Grid.Row="1" 
+            <local:DicePanel x:Name="Dices" Height="300" Grid.Row="1" 
                              NumberOfDice="{x:Bind SelectedToInt(NumberOfDiceSelection.SelectedValue) ,Mode=OneWay}"/>
 
-            <Button Content="Throw" Grid.Row="2" Click="Roll" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+            <Button Content="Throw" Grid.Row="2" Height="80" Click="Roll" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
             <TextBlock Grid.Row="3" Text="{x:Bind PrintLast(Results) , Mode=OneWay}" FontSize="30" />
         </StackPanel>
 
