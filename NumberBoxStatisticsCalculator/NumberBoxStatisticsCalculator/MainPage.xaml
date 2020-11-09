@@ -31,11 +31,19 @@
 
                 <TextBlock FontSize="43" Margin="10,0,0,0">
                     <Run>Average: </Run>
-                    <Run Text="{x:Bind InputPanel.Average , Mode=OneWay}"/>
+                    <Run Text="{x:Bind InputPanel.Statistics.Average , Mode=OneWay}"/>
                     <LineBreak/>
-                    <Run>Medean: </Run>
-                    <Run Text="{x:Bind InputPanel.Medean , Mode=OneWay}"/>
+                    <Run>Median: </Run>
+                    <Run Text="{x:Bind InputPanel.Statistics.Median , Mode=OneWay}"/>
                     <LineBreak/>
+                    <Run>Sum: </Run>
+                    <Run Text="{x:Bind InputPanel.Statistics.Sum , Mode=OneWay}"/>
+                    <LineBreak/>
+                    <Run>Max: </Run>
+                    <Run Text="{x:Bind InputPanel.Statistics.Maximum , Mode=OneWay}"/>
+                    <LineBreak/>
+                    <Run>Min: </Run>
+                    <Run Text="{x:Bind InputPanel.Statistics.Mininum , Mode=OneWay}"/>
                 </TextBlock>
 
             </StackPanel>

@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="70" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{x:Bind Header}" FontSize="34" VerticalAlignment="Center"/>
+            <TextBlock Text="{x:Bind Header, Mode=OneWay}" FontSize="34" VerticalAlignment="Center"/>
 
             <Slider x:Name="InternalSlider" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" TickFrequency="10" />
             

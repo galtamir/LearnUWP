@@ -21,18 +21,26 @@ namespace NumberBoxStatisticsCalculator
     public sealed partial class InputPanel : UserControl
     {
         private readonly List<MySlider> sliders;
-        
+
+        public InputPanel()
+        {
+            this.InitializeComponent();
+            sliders = new List<MySlider>();
+        }
+
         public int Size
         {
             get { return (int)GetValue(SizeProperty); }
             set
             {
-                if (value >= 0)
+                if (value < 0)
                 {
-                    var oldValue = Size;
-                    SetValue(SizeProperty, value);
-                    SizeChainged(oldValue, value);
+                    value = 0;
                 }
+
+                var oldValue = Size;
+                SetValue(SizeProperty, value);
+                SizeChainged(oldValue, value);
             }
         }
 
@@ -41,28 +49,15 @@ namespace NumberBoxStatisticsCalculator
             DependencyProperty.Register("Size", typeof(int), typeof(InputPanel), new PropertyMetadata(0));
 
 
-        public double Average
+        public Statistics Statistics
         {
-            get { return (double)GetValue(AverageProperty); }
-            set { SetValue(AverageProperty, value); }
+            get { return (Statistics)GetValue(StatisticsProperty); }
+            set { SetValue(StatisticsProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Average.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty AverageProperty =
-            DependencyProperty.Register("Average", typeof(double), typeof(InputPanel), new PropertyMetadata(0.0));
-
-
-
-        public double Medean
-        {
-            get { return (double)GetValue(MedeanProperty); }
-            set { SetValue(MedeanProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Medean.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MedeanProperty =
-            DependencyProperty.Register("Medean", typeof(double), typeof(InputPanel), new PropertyMetadata(0));
-
+        public static readonly DependencyProperty StatisticsProperty =
+            DependencyProperty.Register("Statistics", typeof(Statistics), typeof(InputPanel), new PropertyMetadata(0.0));
 
 
         private void SizeChainged(int oldValue, int newValue)
@@ -76,13 +71,6 @@ namespace NumberBoxStatisticsCalculator
                 RemoveInput();
             }
             ValueChanged(this, null);
-        }
-
-
-        public InputPanel()
-        {
-            this.InitializeComponent();
-            sliders = new List<MySlider>();
         }
 
         internal void Clear()
@@ -109,13 +97,11 @@ namespace NumberBoxStatisticsCalculator
         {
             if (Size > 0)
             {
-                Average = sliders.Average(slider => slider.Value);
-                Medean = sliders.Select(x => x.Value).OrderBy(x => x).ElementAt(Size / 2);
+                Statistics = Statistics.Calculate(sliders.Select(x=>x.Value));
             }
             else
             {
-                Average = Double.NaN;
-                Medean = Double.NaN;
+                Statistics = Statistics.Empty;
             }
 
         }
