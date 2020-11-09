@@ -19,6 +19,19 @@ namespace Calculator
 {
     public sealed partial class ResultViewer : UserControl
     {
+
+
+        public string Formula
+        {
+            get { return (string)GetValue(FormulaProperty); }
+            set { SetValue(FormulaProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Formula.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FormulaProperty =
+            DependencyProperty.Register("Formula", typeof(string), typeof(ResultViewer), new PropertyMetadata("0"));
+
+
         public ResultViewer()
         {
             this.InitializeComponent();

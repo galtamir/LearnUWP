@@ -5,16 +5,11 @@
     xmlns:local="using:DiceGame"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignHeight="108"
-    d:DesignWidth="108">
+    mc:Ignorable="d">
 
-    <Grid>
-
-        <Image Stretch="Fill">
-            <Image.Source>
-                <SvgImageSource UriSource="{x:Bind NumberToBitmap(Value), Mode=OneWay}" />
-            </Image.Source>
-        </Image>
-    </Grid>
+    <Image>
+        <Image.Source>
+            <SvgImageSource UriSource="{x:Bind NumberToBitmap(Value), Mode=OneWay}" />
+        </Image.Source>
+    </Image>
 </UserControl>

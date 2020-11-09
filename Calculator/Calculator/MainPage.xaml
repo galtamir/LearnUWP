@@ -18,8 +18,8 @@
                 <RowDefinition Height="150"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <local:ResultViewer />
-            <local:InputBar Grid.Row="1" />
+            <local:ResultViewer x:Name="ResultViewer"/>
+            <local:InputBar  Grid.Row="1" OnInputAdded="InputBar_OnInputAdded" />
         </Grid>
     </Grid>
 </Page>

@@ -19,41 +19,68 @@ namespace Calculator
 {
     public sealed partial class InputBar : UserControl
     {
+        public delegate void NumberButtonInpotEventHandler(object sender, AppendNumberEventArgs e);
+        public event NumberButtonInpotEventHandler OnInputAdded;
+
+        private static readonly Brush numberColor = new SolidColorBrush(Windows.UI.Colors.Blue);
+        private static readonly Brush operationColor = new SolidColorBrush(Windows.UI.Colors.Blue);
+
         public InputBar()
         {
             this.InitializeComponent();
+            OnInputAdded += (x,y)=> { };
 
-            Button b = CreatButton(0);
+            CreatButton(".",4,1, numberColor);
 
-            MainPanel.Children.Add(b);
-            Grid.SetRow(b, 4);
-            Grid.SetColumn(b, 1);
+            CreatButton("^",4,2, operationColor);
+            CreatButton("+",4,3, operationColor);
+            CreatButton("-",3,3, operationColor);
+            CreatButton("*" , 2, 3, operationColor);
 
+            CreatButton("/", 1, 3, operationColor);
+
+            CreatButton("0", 4, 0, numberColor);
             for (int i = 1; i <= 9; i++)
             {
-                b = CreatButton(i);
-
-                MainPanel.Children.Add(b);
-                Grid.SetRow(b, 3 - ((i - 1) / 3));
-                Grid.SetColumn(b, (((i - 1) % 3) + 3) % 3);
+                CreatButton(i.ToString(), 4 - ((i + 2) / 3), (((i - 1) % 3) + 3) % 3, numberColor);
             }
+           
         }
 
-        private static Button CreatButton(int i)
+        private Button CreatButton(string i, int row, int column, Brush background)
         {
             var b =  new Button
             {
+                FontSize = 42,
+                Background = background,
                 Content = i,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 Margin = new Thickness { Bottom = 5, Top=5, Left=5, Right = 5 }
             };
-            b.Click += B_Click;
+            b.Click += InputButtonClicked;
+            MainPanel.Children.Add(b);
+
+            Grid.SetRow(b, row);
+            Grid.SetColumn(b, column);
+
             return b;
         }
 
-        private static void B_Click(object sender, RoutedEventArgs e)
+        private void InputButtonClicked(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            OnInputAdded(this, new AppendNumberEventArgs((string)button.Content));
+        }
+
+        public class AppendNumberEventArgs : EventArgs
+        {
+            public AppendNumberEventArgs(string toAppend)
+            {
+                ToAppent = toAppend;
+            }
+
+            public string ToAppent { get; set; }
         }
     }
 }
