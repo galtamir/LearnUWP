@@ -26,5 +26,10 @@ namespace Calculator
         {
             this.InitializeComponent();
         }
+
+        private void InputBar_OnInputAdded(object sender, InputBar.AppendNumberEventArgs e)
+        {
+            ResultViewer.Formula = ResultViewer.Formula + e.ToAppent;
+        }
     }
 }
