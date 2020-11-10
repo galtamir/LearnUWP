@@ -6,10 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Image>
+    
+    <Image Margin="30,30,30,30">
         <Image.Source>
-            <SvgImageSource UriSource="{x:Bind NumberToBitmap(Value), Mode=OneWay}" />
+            <SvgImageSource 
+                UriSource="{x:Bind NumberToURI(Value), Mode=OneWay}" 
+                RasterizePixelHeight="115"
+                RasterizePixelWidth ="115" />
         </Image.Source>
     </Image>
 </UserControl>

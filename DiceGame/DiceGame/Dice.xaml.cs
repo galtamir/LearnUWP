@@ -47,7 +47,7 @@ namespace DiceGame
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(int), typeof(Dice), new PropertyMetadata(1));
 
-        public Uri NumberToBitmap(int number)
+        public Uri NumberToURI(int number)
         {
             return new Uri(BaseUri, $"Images/dice_{number}.svg");
         }

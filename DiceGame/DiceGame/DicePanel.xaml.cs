@@ -67,7 +67,7 @@ namespace DiceGame
 
         private void AddDice()
         {
-            var dice = new Dice { VerticalAlignment = VerticalAlignment.Center , HorizontalAlignment = HorizontalAlignment.Center };
+            var dice = new Dice();
             MainPanel.Children.Add(dice);
             MainPanel.ColumnDefinitions.Add(new ColumnDefinition());
             Grid.SetColumn(dice, dices.Count);

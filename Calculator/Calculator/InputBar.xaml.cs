@@ -21,56 +21,87 @@ namespace Calculator
     {
         public delegate void NumberButtonInpotEventHandler(object sender, AppendNumberEventArgs e);
         public event NumberButtonInpotEventHandler OnInputAdded;
+        public event NumberButtonInpotEventHandler OnOperationClicked;
+        public event NumberButtonInpotEventHandler OnEqualClicked;
 
-        private static readonly Brush numberColor = new SolidColorBrush(Windows.UI.Colors.Blue);
-        private static readonly Brush operationColor = new SolidColorBrush(Windows.UI.Colors.Blue);
+        private static readonly Brush numberColor = new SolidColorBrush(Windows.UI.Colors.Wheat);
+        private static readonly Brush operationColor = new SolidColorBrush(Windows.UI.Colors.FloralWhite);
 
         public InputBar()
         {
             this.InitializeComponent();
             OnInputAdded += (x,y)=> { };
 
-            CreatButton(".",4,1, numberColor);
+            CreatOperationButton(".",4,1);
 
-            CreatButton("^",4,2, operationColor);
-            CreatButton("+",4,3, operationColor);
-            CreatButton("-",3,3, operationColor);
-            CreatButton("*" , 2, 3, operationColor);
+            CreatOperationButton("^",0,2);
+            CreatOperationButton("+",4,3);
+            CreatOperationButton("-",3,3);
+            CreatOperationButton("*" , 2, 3);
 
-            CreatButton("/", 1, 3, operationColor);
+            CreatOperationButton("/", 1, 3);
 
-            CreatButton("0", 4, 0, numberColor);
+            CreatNumberButton(0, 4, 0);
             for (int i = 1; i <= 9; i++)
             {
-                CreatButton(i.ToString(), 4 - ((i + 2) / 3), (((i - 1) % 3) + 3) % 3, numberColor);
+                CreatNumberButton(i, 4 - ((i + 2) / 3), (((i - 1) % 3) + 3) % 3);
             }
-           
+            CreatEqualButton(4, 2);
+        }
+
+        private void CreatEqualButton(int row, int column)
+        {
+            var b = CreatButton("=", row, column, numberColor);
+            b.Click += EqualeClicked;
+        }
+
+        private void CreatNumberButton(int i, int row, int column)
+        {
+            var b = CreatButton(i.ToString(), row, column, numberColor);
+            b.Click += InputButtonClicked;
+        }
+
+        private void CreatOperationButton(string i, int row, int column)
+        {
+            var b = CreatButton(i, row, column, operationColor);
+            b.Click += OperationClicked;
         }
 
         private Button CreatButton(string i, int row, int column, Brush background)
         {
-            var b =  new Button
+            var b = new Button
             {
                 FontSize = 42,
                 Background = background,
                 Content = i,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
-                Margin = new Thickness { Bottom = 5, Top=5, Left=5, Right = 5 }
+                Margin = new Thickness { Bottom = 5, Top = 5, Left = 5, Right = 5 }
             };
-            b.Click += InputButtonClicked;
             MainPanel.Children.Add(b);
 
             Grid.SetRow(b, row);
             Grid.SetColumn(b, column);
-
             return b;
+
         }
 
         private void InputButtonClicked(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            OnInputAdded(this, new AppendNumberEventArgs((string)button.Content));
+            OnInputAdded(button, new AppendNumberEventArgs((string)button.Content));
+        }
+
+        private void OperationClicked(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            OnInputAdded(button, new AppendNumberEventArgs((string)button.Content));
+        }
+
+        private void EqualeClicked(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            OnInputAdded(button, new AppendNumberEventArgs((string)button.Content));
         }
 
         public class AppendNumberEventArgs : EventArgs
