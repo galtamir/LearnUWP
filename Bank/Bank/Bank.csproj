@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{F5F3E022-CCAA-40B3-9B28-0B4DA56BD406}</ProjectGuid>
+    <ProjectGuid>{C5EE0D8F-2AE8-431B-995D-1F48825E9841}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Calculator</RootNamespace>
-    <AssemblyName>Calculator</AssemblyName>
+    <RootNamespace>Bank</RootNamespace>
+    <AssemblyName>Bank</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -119,29 +119,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CalculatorButton.xaml.cs">
-      <DependentUpon>CalculatorButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HistoryBar.xaml.cs">
-      <DependentUpon>HistoryBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="InputBar.xaml.cs">
-      <DependentUpon>InputBar.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Identity\BankUser.cs" />
+    <Compile Include="Identity\LoginResult.cs" />
+    <Compile Include="Identity\UserManager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Operations\BinayOperation.cs" />
-    <Compile Include="Operations\CalculatorButton.cs" />
-    <Compile Include="Operations\Expression.cs" />
-    <Compile Include="Operations\ExpressionTree.cs" />
-    <Compile Include="Operations\IOperation.cs" />
-    <Compile Include="Operations\NumberOperation.cs" />
-    <Compile Include="Operations\OperationEventArgs.cs" />
-    <Compile Include="Operations\OperationNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultViewer.xaml.cs">
-      <DependentUpon>ResultViewer.xaml</DependentUpon>
+    <Compile Include="SignIn.xaml.cs">
+      <DependentUpon>SignIn.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -164,23 +150,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CalculatorButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HistoryBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="InputBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ResultViewer.xaml">
+    <Page Include="SignIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,9 +162,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.4.3</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
