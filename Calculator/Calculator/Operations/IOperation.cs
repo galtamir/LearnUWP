@@ -6,6 +6,6 @@ namespace Calculator.Operations
     {
         Brush Background { get; }
         object Content { get; }
-        int
+        
     }
 }

@@ -8,16 +8,26 @@ namespace Calculator.Operations
 {
     class ExpressionTree
     {
-        private OperationNode node;
+        private IOperationNode root;
+        private IOperationNode last;
 
         public ExpressionTree()
         {
-            node = new OperationNode();
+            root = new RootNodeOperation();
+            last = root;
         }
 
-        public void Add(IOperation operation)
+        public void Add(IOperationNode operation)
         {
-            if(operation.)
+            if (last.TryAdd(operation))
+            {
+                last = operation;
+            }
+        }
+
+        public double Evaluate()
+        {
+            return root.Evaluate();
         }
     }
 }

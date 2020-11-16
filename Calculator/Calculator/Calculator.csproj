@@ -11,7 +11,7 @@
     <AssemblyName>Calculator</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -131,14 +131,17 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Operations\BinaryOperationNode.cs" />
     <Compile Include="Operations\BinayOperation.cs" />
     <Compile Include="Operations\CalculatorButton.cs" />
     <Compile Include="Operations\Expression.cs" />
     <Compile Include="Operations\ExpressionTree.cs" />
     <Compile Include="Operations\IOperation.cs" />
+    <Compile Include="Operations\NumberNode.cs" />
     <Compile Include="Operations\NumberOperation.cs" />
     <Compile Include="Operations\OperationEventArgs.cs" />
-    <Compile Include="Operations\OperationNode.cs" />
+    <Compile Include="Operations\IOperationNode.cs" />
+    <Compile Include="Operations\RootNodeOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultViewer.xaml.cs">
       <DependentUpon>ResultViewer.xaml</DependentUpon>
