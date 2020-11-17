@@ -38,5 +38,10 @@ namespace Bank.Identity
         {
             return users.TryAdd(user.UserName, user);
         }
+
+        public bool Contains(string userName)
+        {
+            return users.ContainsKey(userName);
+        }
     }
 }

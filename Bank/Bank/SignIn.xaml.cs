@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank.Identity;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,8 +20,12 @@ namespace Bank
 {
     public sealed partial class SignIn : ContentDialog
     {
-        public SignIn()
+        public BankUser LogedinUser { get; private set; }
+        private UserManager UserManager;
+
+        public SignIn(UserManager userManager)
         {
+            UserManager = userManager;
             this.InitializeComponent();
         }
 
@@ -38,10 +43,37 @@ namespace Bank
                 args.Cancel = true;
                 errorTextBlock.Text = "Password is required.";
             }
+            else
+            {
+                var result = UserManager.Login(userNameTextBox.Text, passwordTextBox.Password, out BankUser user);
+                if (LoginResult.InvalidPassword.Equals(result))
+                {
+                    args.Cancel = true;
+                    errorTextBlock.Text = "Invalid Password.";
+                }
+                if (LoginResult.InvalidUser.Equals(result))
+                {
+                    args.Cancel = true;
+                    errorTextBlock.Text = "Invalid User.";
+                }
+                else
+                {
+                    LogedinUser = user;
+                }
+            }
+            Reset();
+
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            Reset();
+        }
+
+        private void Reset()
+        {
+            passwordTextBox.Password = String.Empty;
+            userNameTextBox.Text = String.Empty;
         }
     }
 }
