@@ -21,41 +21,19 @@ namespace Bank
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LoginPage : Page
+    public sealed partial class HomePage : Page
     {
-        public MainPage MainPage;
+        private BankUser user;
 
-        private UserManager UserManager;
-
-        public LoginPage()
+        public HomePage()
         {
             this.InitializeComponent();
         }
 
-        
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MainPage = e.Parameter as MainPage;
-            UserManager = MainPage.userManager;
+            user = e.Parameter as BankUser;
             base.OnNavigatedTo(e);
-        }
-
-        private async void SignInButtonClickedAsync(object sender, RoutedEventArgs e)
-        {
-            var dialog = new SignIn(UserManager);
-            var result = await dialog.ShowAsync();
-            if(result == ContentDialogResult.Primary)
-            {
-                MainPage.NavigateToAccount(dialog.LogedinUser);
-            }
-        }
-
-        private async void SignupButtonClickedAsync(object sender, RoutedEventArgs e)
-        {
-            var dialog = new Signup(UserManager);
-            var result = await dialog.ShowAsync();
-
         }
     }
 }

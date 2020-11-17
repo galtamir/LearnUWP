@@ -8,7 +8,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <NavigationView x:Name="NavView"
+                         Loaded="NavView_Loaded"
+                         ItemInvoked="NavView_ItemInvoked"
+                         BackRequested="NavView_BackRequested">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Home" Content="Home" Tag="Home"/>
+            <NavigationViewItem Icon="AllApps" Content="Transactions" Tag="Transactions"/>
+            <NavigationViewItem Icon="Globe" Content="Exchange Rates" Tag="ExchangeRates"/>
+            <NavigationViewItem Icon="Permissions" Content="Change Password" Tag="ChangePassword"/>
+        </NavigationView.MenuItems>
+
+        <ScrollViewer>
+            <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                   NavigationFailed="ContentFrame_NavigationFailed"/>
+        </ScrollViewer>
         
-    </Grid>
+    </NavigationView>
 </Page>

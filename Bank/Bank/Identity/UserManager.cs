@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Bluetooth.GenericAttributeProfile;
 
 namespace Bank.Identity
 {
@@ -13,6 +14,7 @@ namespace Bank.Identity
         public UserManager()
         {
             users = new Dictionary<string, BankUser>();
+            users.Add("admin", new BankUser("admin", "admin") {FirstName="Admin", LastName="AD", Email= "Admin@Admin.com" });
         }
 
         public LoginResult Login(string userName, string password, out BankUser bankUser)
