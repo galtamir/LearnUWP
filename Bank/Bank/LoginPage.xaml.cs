@@ -23,39 +23,53 @@ namespace Bank
     /// </summary>
     public sealed partial class LoginPage : Page
     {
-        public MainPage MainPage;
+        public event TypedEventHandler<Page, BankUser> OnUserLogin;
 
-        private UserManager UserManager;
+        private SignIn SignInDialog;
+        private Signup SignUpDialog;
 
         public LoginPage()
         {
+            SignInDialog = new SignIn();
+            SignUpDialog = new Signup();
+            SignInDialog.OnUserLogin += UserLogedin;
+            SignUpDialog.OnUserSinedup += UserSinedupAsync;
             this.InitializeComponent();
         }
 
-        
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MainPage = e.Parameter as MainPage;
-            UserManager = MainPage.userManager;
+            var page = e.Parameter as MainPage;
+            SignInDialog.UserManager = page.userManager;
+            SignUpDialog.UserManager = page.userManager;
+            SignInDialog.OnUserLogin += page.NavigateToAccount;
             base.OnNavigatedTo(e);
         }
 
         private async void SignInButtonClickedAsync(object sender, RoutedEventArgs e)
         {
-            var dialog = new SignIn(UserManager);
-            var result = await dialog.ShowAsync();
-            if(result == ContentDialogResult.Primary)
-            {
-                MainPage.NavigateToAccount(dialog.LogedinUser);
-            }
+            var result = await SignInDialog.ShowAsync();
         }
+
+
 
         private async void SignupButtonClickedAsync(object sender, RoutedEventArgs e)
         {
-            var dialog = new Signup(UserManager);
-            var result = await dialog.ShowAsync();
+            var result = await SignUpDialog.ShowAsync();
 
+        }
+
+        private void UserLogedin(SignIn sender, BankUser args)
+        {
+            if (OnUserLogin != null)
+                OnUserLogin(this, args);
+        }
+
+        private async void UserSinedupAsync(object sender, string userName)
+        {
+            SignInDialog.SetUserName(userName);
         }
     }
 }

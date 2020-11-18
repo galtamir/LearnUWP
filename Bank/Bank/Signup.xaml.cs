@@ -22,14 +22,15 @@ namespace Bank
 {
     public sealed partial class Signup : ContentDialog
     {
-        private UserManager UserManager;
+        public UserManager UserManager { get; set; }
+
+        public event TypedEventHandler<ContentDialog, string> OnUserSinedup;
 
         private static string emailPattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
 
 
-        public Signup(UserManager userManager)
+        public Signup()
         {
-            UserManager = userManager;
             this.InitializeComponent();
         }
 
@@ -80,6 +81,10 @@ namespace Bank
                 {
                     args.Cancel = true;
                     errorTextBlock.Text = "Failed adding new user.";
+                }
+                else if(OnUserSinedup != null)
+                {
+                    OnUserSinedup(this, userNameTextBox.Text);
                 }
             }
         }

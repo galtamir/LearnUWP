@@ -20,13 +20,18 @@ namespace Bank
 {
     public sealed partial class SignIn : ContentDialog
     {
-        public BankUser LogedinUser { get; private set; }
-        private UserManager UserManager;
+        public event TypedEventHandler<SignIn, BankUser> OnUserLogin;
 
-        public SignIn(UserManager userManager)
+        public UserManager UserManager { get; set; }
+
+        public SignIn()
         {
-            UserManager = userManager;
             this.InitializeComponent();
+        }
+
+        public void SetUserName(string userName)
+        {
+            userNameTextBox.Text = userName;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -56,9 +61,9 @@ namespace Bank
                     args.Cancel = true;
                     errorTextBlock.Text = "Invalid User.";
                 }
-                else
+                else if(OnUserLogin != null)
                 {
-                    LogedinUser = user;
+                    OnUserLogin(this, user);
                 }
             }
             Reset();

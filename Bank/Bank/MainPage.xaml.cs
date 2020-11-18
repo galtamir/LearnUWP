@@ -33,7 +33,7 @@ namespace Bank
             ContentFrame.Navigate(typeof(Bank.LoginPage), this);
         }
 
-        public void NavigateToAccount(BankUser user)
+        public void NavigateToAccount(SignIn Page, BankUser user)
         {
             ContentFrame.Navigate(typeof(Bank.AccountPage), user);
         }
