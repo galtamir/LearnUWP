@@ -1,6 +1,10 @@
 ﻿namespace Bank.Identity
 {
-    public class Gender
+    public enum Gender
     {
+        Male,
+        Female,
+        Other,
+        Unknown
     }
 }

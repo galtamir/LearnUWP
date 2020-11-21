@@ -22,7 +22,7 @@ namespace Bank.Identity
             bankUser = null;
             if (users.TryGetValue(userName, out BankUser user))
             {
-                if (user.Password.Equals(password))
+                if (user.Credentials.IsPasswordCorect(password))
                 {
                     bankUser = user;
                     return LoginResult.Sucess;
@@ -38,7 +38,7 @@ namespace Bank.Identity
 
         public bool AddNewUser(BankUser user)
         {
-            return users.TryAdd(user.UserName, user);
+            return users.TryAdd(user.Credentials.UserName, user);
         }
 
         public bool Contains(string userName)

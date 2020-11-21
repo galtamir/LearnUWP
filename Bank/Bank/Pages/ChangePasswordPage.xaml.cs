@@ -38,7 +38,7 @@ namespace Bank
 
         private void ChangePassword(object sender, RoutedEventArgs e)
         {
-            if (!user.Password.Equals(OldPassword.Password)) 
+            if (!user.Credentials.IsPasswordCorect(OldPassword.Password)) 
             {
                 OldPassword.Password = string.Empty;
                 OldPassword.PlaceholderText = "Incorrect password";
@@ -54,7 +54,7 @@ namespace Bank
                 return;
             }
 
-            user.Password = NewPassword.Password;
+            user.Credentials.CahngePassword(OldPassword.Password, NewPassword.Password);
 
             OldPassword.Password = string.Empty;
             NewPassword.Password = string.Empty;

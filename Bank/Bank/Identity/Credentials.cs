@@ -1,21 +1,35 @@
-﻿namespace Bank.Identity
+﻿using System;
+
+namespace Bank.Identity
 {
     public class Credentials
     {
-        private string userName;
+        public string UserName { get; private set; }
         private string password;
 
         private string seed;
 
         public Credentials(string userName, string password)
         {
-            this.userName = userName;
+            UserName = userName;
             this.password = password;
         }
 
-        public void CahngePassword()
-        {
+        
 
+        public bool CahngePassword(string oldPassword, string newPassword)
+        {
+            if (IsPasswordCorect(oldPassword))
+            {
+                oldPassword = newPassword;
+                return true;
+            }
+            return false;
+        }
+
+        internal bool IsPasswordCorect(string password)
+        {
+            return password.Equals(password);
         }
     }
 }

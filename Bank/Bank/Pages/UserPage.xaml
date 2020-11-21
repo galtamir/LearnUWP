@@ -36,7 +36,7 @@
                     <RowDefinition Height="60"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox ItemsSource="{x:Bind Fonts}" DisplayMemberPath="Item1" SelectedValuePath="Item2" Grid.Row="1" Grid.Column="1"
+                <ComboBox ItemsSource="{x:Bind Bank.Identity.Gender }" DisplayMemberPath="Item1" SelectedValuePath="Item2" Grid.Row="1" Grid.Column="1"
                     Header="Font" Width="200" Loaded="Combo2_Loaded"/>
                 <TextBlock Text="Old Password" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
                 <TextBlock x:Name="OldPassword" Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" FontSize="32"/>
