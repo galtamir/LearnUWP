@@ -53,6 +53,7 @@ namespace Calculator
         {
             var b = CreatButton("=", row, column, numberColor);
             b.Click += EqualeClicked;
+            
         }
 
         private void CreatNumberButton(int i, int row, int column)

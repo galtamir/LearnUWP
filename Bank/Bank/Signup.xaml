@@ -1,0 +1,30 @@
+﻿<ContentDialog
+    x:Class="Bank.Signup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bank"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Sign Up"
+    PrimaryButtonText="Signup"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="firstNameTextBox" PlaceholderText="First Name" Margin="10" Grid.Column="0" />
+            <TextBox x:Name="LastNameTextBox" PlaceholderText="Last Name" Margin="10" Grid.Column="1"/>
+        </Grid>
+        <TextBox x:Name="emailTextBox" PlaceholderText="Email" Margin="10" />    
+        <TextBox x:Name="userNameTextBox" PlaceholderText="User Name" Margin="10" />
+        <PasswordBox x:Name="passwordTextBox" PlaceholderText="Password" Margin="10"/>
+        <PasswordBox x:Name="ReenterpasswordTextBox" PlaceholderText="Reenter Password" Margin="10"/>
+        <TextBlock x:Name="errorTextBlock" Foreground="Red" />
+    </StackPanel>
+</ContentDialog>
