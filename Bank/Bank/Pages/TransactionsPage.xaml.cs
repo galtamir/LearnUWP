@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank.Identity;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,17 @@ namespace Bank
     /// </summary>
     public sealed partial class TransactionsPage : Page
     {
+        private BankUser user;
+
         public TransactionsPage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            user = e.Parameter as BankUser;
+            base.OnNavigatedTo(e);
         }
     }
 }

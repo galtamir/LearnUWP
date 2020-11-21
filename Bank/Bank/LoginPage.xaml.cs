@@ -67,7 +67,7 @@ namespace Bank
                 OnUserLogin(this, args);
         }
 
-        private async void UserSinedupAsync(object sender, string userName)
+        private void UserSinedupAsync(object sender, string userName)
         {
             SignInDialog.SetUserName(userName);
         }

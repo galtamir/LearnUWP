@@ -38,6 +38,7 @@ namespace Bank
             ("Transactions", typeof(TransactionsPage)),
             ("ExchangeRates", typeof(ExchangeRatesPage)),
             ("ChangePassword", typeof(ChangePasswordPage)),
+            ("User",typeof(UserPage))
         };
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

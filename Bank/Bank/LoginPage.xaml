@@ -21,6 +21,11 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/BankBeckgroend.jpg" Opacity="0.2"/>
+        </Grid.Background>
+        
         <Button Content="Sign In" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="SignInButtonClickedAsync" />
         <Button Content="Sign up" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="SignupButtonClickedAsync"/>
     </Grid>
