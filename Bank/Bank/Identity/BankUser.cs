@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Bank.Identity
 {
@@ -14,6 +16,7 @@ namespace Bank.Identity
         public string Email { get; internal set; }
         public string FirstName { get; internal set; }
         public string LastName { get; internal set; }
+        public DateTimeOffset BirthDay { get; set; }
 
         public string FullName => $"{FirstName} {LastName}";
 

@@ -30,7 +30,7 @@ namespace Calculator
         public InputBar()
         {
             this.InitializeComponent();
-            OnInputAdded += (x,y)=> { };
+            OnInputAdded += (x,y) => { };
 
             CreatOperationButton(".",4,1);
 

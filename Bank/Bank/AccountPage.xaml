@@ -17,10 +17,9 @@
             <NavigationViewItem Icon="AllApps" Content="Transactions" Tag="Transactions"/>
             <NavigationViewItem Icon="Globe" Content="Exchange Rates" Tag="ExchangeRates"/>
             <NavigationViewItem Icon="Permissions" Content="Change Password" Tag="ChangePassword"/>
-        </NavigationView.MenuItems>
-        <NavigationView.PaneFooter>
             <NavigationViewItem Icon="Contact" Content="{x:Bind user.FullName, Mode=OneWay}" Tag="User"/>
-        </NavigationView.PaneFooter>
+        </NavigationView.MenuItems>
+
         <ScrollViewer>
             <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
                    NavigationFailed="ContentFrame_NavigationFailed"/>

@@ -24,6 +24,7 @@ namespace Bank
     public sealed partial class UserPage : Page
     {
         private BankUser user;
+        private IEnumerable<string> Genders => Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(v => v.ToString());
 
         public UserPage()
         {
@@ -34,6 +35,16 @@ namespace Bank
         {
             user = e.Parameter as BankUser;
             base.OnNavigatedTo(e);
+        }
+
+        private void Update(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Combo_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

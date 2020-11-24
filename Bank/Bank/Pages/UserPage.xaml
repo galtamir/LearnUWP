@@ -20,7 +20,7 @@
                 <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Personal Details" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="42"/>
-            <Button Grid.Row="2" Content="Update" VerticalAlignment="Center" HorizontalAlignment="Center" Click="ChangePassword" FontSize="42" />
+            <Button Grid.Row="2" Content="Update" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Update" FontSize="42" />
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -30,22 +30,22 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="120"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox ItemsSource="{x:Bind Bank.Identity.Gender }" DisplayMemberPath="Item1" SelectedValuePath="Item2" Grid.Row="1" Grid.Column="1"
-                    Header="Font" Width="200" Loaded="Combo2_Loaded"/>
-                <TextBlock Text="Old Password" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
-                <TextBlock x:Name="OldPassword" Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" FontSize="32"/>
+                <ComboBox ItemsSource="{x:Bind Genders }" Margin="10" Grid.Row="1" Grid.Column="1" FontSize="32" Header="Gender" Loaded="Combo_Loaded"/>
+                <TextBox Header="First Name" Margin="10" Text="{x:Bind user.FirstName, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
+                <TextBox  Header="Last Name" Margin="10" Text="{x:Bind user.LastName, Mode=TwoWay}" Grid.Row="2" Grid.Column="2"  VerticalAlignment="Center" FontSize="32"/>
 
-                <TextBlock Text="New Password" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
-                <TextBlock x:Name="NewPassword" Grid.Row="3" Grid.Column="2"  VerticalAlignment="Center" FontSize="32"/>
+                <DatePicker Header="Date Of Birth" Margin="10" Date="{x:Bind user.BirthDay, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
+                <TextBox  Header="Last Name" Margin="10" Text="{x:Bind user.LastName, Mode=TwoWay}" Grid.Row="3" Grid.Column="2"  VerticalAlignment="Center" FontSize="32"/>
 
-                <TextBlock Text="Reenter New Password" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
-                <TextBlock x:Name="ReenterPassword" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontSize="32"/>
+                <TextBox Header="First Name" Margin="10" Text="{x:Bind user.FirstName, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontSize="32"/>
+                <TextBox  Header="Last Name" Margin="10" Text="{x:Bind user.LastName, Mode=TwoWay}" Grid.Row="4" Grid.Column="2"  VerticalAlignment="Center" FontSize="32"/>
+
 
             </Grid>
         </Grid>
