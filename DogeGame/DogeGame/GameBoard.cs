@@ -1,4 +1,5 @@
 ﻿using DogeGameLogics.Logic;
+using DogeGameLogics.Logic.Pieces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,6 +58,8 @@ namespace DogeGameLogics
             {
                 enemy.Update(_player, playersDirection);
             }
+
+            Logics.Validate(_player, _enemies);
         }
     }
 }

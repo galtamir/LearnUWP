@@ -23,8 +23,8 @@ namespace DogeGameLogics.Logic.PositionTarsformers
             {
                 case Direction.Up: return Up(from);
                 case Direction.Down: return Down(from);
-                case Direction.Left: return Down(from);
-                default: return Down(from);
+                case Direction.Left: return Left(from);
+                default: return Right(from);
             }
         }
 
