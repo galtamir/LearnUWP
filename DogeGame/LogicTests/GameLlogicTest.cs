@@ -17,7 +17,7 @@ namespace LogicTests
             GameLogics g = GameLogics.LogicsBuilder()
                 .SetHeigth(50)
                 .SetWidth(70)
-                .Cyclic()
+                .Cyclic(true)
                 .NumberOfEnemies(5)
                 .Build();
             Assert.AreEqual(50, g.BoardHiegth);

@@ -15,6 +15,11 @@ namespace DogeGameLogics.Logic
         private IEnumerable<Position> _enemiesPositions;
         private IPositionTarsformer _positionTarsformer;
 
+        public static LogicsBuilder LogicsBuilder()
+        {
+            return new LogicsBuilder();
+        }
+
         internal GameLogics(int boardHiegth, int boardWidth, bool isBoardCyclic, 
             Position playerPosition, IEnumerable<Position> enemiesPositions)
         {
@@ -42,13 +47,6 @@ namespace DogeGameLogics.Logic
             }
             return l;
         }
-
-        public static LogicsBuilder LogicsBuilder()
-        {
-            return new LogicsBuilder();
-        }
-
-
 
         public bool IsWinningState(Piece player, ICollection<Piece> enemies)
         {
@@ -79,6 +77,11 @@ namespace DogeGameLogics.Logic
                     enemies.Remove(d.Current);
                 }
             }
+        }
+
+        public GameBoard GenerateBoard()
+        {
+            return new GameBoard(this);
         }
     }
 }

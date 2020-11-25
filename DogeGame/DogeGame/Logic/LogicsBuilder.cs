@@ -44,9 +44,9 @@ namespace DogeGameLogics.Logic
             return this;
         }
 
-        public LogicsBuilder Cyclic()
+        public LogicsBuilder Cyclic(bool isCyclic)
         {
-            _isCyclic = true;
+            _isCyclic = isCyclic;
             return this;
         }
 

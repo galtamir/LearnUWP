@@ -12,7 +12,7 @@ namespace DogeGame
             var g = new GameBoard(GameLogics.LogicsBuilder()
                     .SetHeigth(10)
                     .SetWidth(10)
-                    .Cyclic()
+                    .Cyclic(true)
                     .NumberOfEnemies(5)
                     .Build());
             Console.WriteLine(ToMatrixString(g.GetState()));

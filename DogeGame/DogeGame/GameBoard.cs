@@ -14,8 +14,6 @@ namespace DogeGameLogics
         private GameLogics Logics { get; init; }
         private Piece _player;
         private ICollection<Piece> _enemies;
-        private ICollection<Piece> _obstacles;
-
 
         public GameBoard(GameLogics gameLogics)
         {
