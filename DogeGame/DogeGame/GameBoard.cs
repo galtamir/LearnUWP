@@ -34,6 +34,8 @@ namespace DogeGameLogics
             return state;
         }
 
+        public Dictionary<int, Position> State => _enemies.Append(_player).ToDictionary(x => x.ID, x => x.Position);
+
         public GameStatus GetGameStatus()
         {
             if (Logics.IsWinningState(_player, _enemies))
