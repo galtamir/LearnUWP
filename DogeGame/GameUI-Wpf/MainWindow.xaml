@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:GameUI_Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="MainGrid">
+    <Grid KeyDown = "OnTextInputKeyDown" KeyUp="OnTextInputKeyDown">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="GamePanel">
+        <Grid x:Name="GamePanel" KeyDown = "OnTextInputKeyDown">
             
         </Grid>
         <Button Grid.Row="1"  Content="New Game" Click="CreateNewGame"/>
@@ -23,11 +23,15 @@
             <TextBlock Text="Settings" FontSize="42" HorizontalAlignment="Center" />
             <TextBlock/>
             <TextBlock Text="Height" Margin="10"/>
-            <Slider x:Name="HeigthSlider" Minimum="10" Maximum="100" Margin="10"/>
+
+            <Slider x:Name="HeigthSlider" Minimum="20" Maximum="50" Margin="10"/>
             <TextBlock Text="Width" Margin="10"/>
-            <Slider x:Name="WidthSlider" Minimum="10" Maximum="100" Margin="10"/>
+            <Slider x:Name="WidthSlider" Minimum="20" Maximum="50" Margin="10"/>
             <TextBlock/>
             <CheckBox x:Name="CyclicCheckBox" Content="Is Cyclic" Margin="10" IsChecked="True"/>
+
+            <TextBlock Text="Speed" Margin="10"/>
+            <Slider x:Name="Speed" Minimum="200" Maximum="1500" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>

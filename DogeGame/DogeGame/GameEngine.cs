@@ -12,6 +12,8 @@ namespace DogeGameLogics
         private int _refreshRate;
         private GameBoard _board;
 
+        private bool _cancel = false;
+
         public Direction Direction { get; set; }
 
         public GameEngine(GameBoard board, int refreshRate)
@@ -23,12 +25,17 @@ namespace DogeGameLogics
 
         public async Task<GameStatus> StartGame(CancellationToken token = default)
         {
-            while (_board.GetGameStatus() == GameStatus.Playing && !token.IsCancellationRequested)
+            while (_board.GetGameStatus() == GameStatus.Playing && !_cancel && !token.IsCancellationRequested)
             {
                 await Task.Delay(_refreshRate);
                 _board.Update(Direction);
             }
             return _board.GetGameStatus();
+        }
+
+        public void Cancel()
+        {
+            _cancel = true;
         }
     }
 }

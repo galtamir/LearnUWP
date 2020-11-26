@@ -23,11 +23,11 @@ namespace GameUI_Wpf
     public partial class MainWindow : Window
     {
         private Dictionary<int, Shape> _livePieces;
+        private GameEngine _engine;
 
         public MainWindow()
         {
             InitializeComponent();
-            MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
         }
 
         private async void CreateNewGame(object sender, RoutedEventArgs e)
@@ -47,10 +47,13 @@ namespace GameUI_Wpf
             board.OnPieceMove += OnPieceMove;
 
             CreatePlayers(board.State);
-            
-            var engine = new GameEngine(board, 1800);
+            if(_engine != null)
+            {
+                _engine.Cancel();
+            }
+            _engine = new GameEngine(board, (int)Speed.Value);
 
-            await engine.StartGame();
+            await _engine.StartGame();
         }
 
         private void CreatePlayers(Dictionary<int, Position> state)
@@ -60,7 +63,7 @@ namespace GameUI_Wpf
             foreach (var id in state.Keys)
             {
                 var position = state[id];
-                Ellipse e = new Ellipse();
+                Shape e = new Ellipse();
                 e.Height = 50; e.Width = 50;
                 e.HorizontalAlignment = HorizontalAlignment.Center;
                 e.VerticalAlignment = VerticalAlignment.Center;
@@ -98,7 +101,12 @@ namespace GameUI_Wpf
 
         private void ClrearBoard()
         {
-            if(GamePanel.ColumnDefinitions.Count > 0)
+            if(_livePieces!=null)
+                foreach (var item in _livePieces.Values)
+                {
+                    GamePanel.Children.Remove(item);
+                }
+            if (GamePanel.ColumnDefinitions.Count > 0)
             {
                 GamePanel.ColumnDefinitions.RemoveRange(0, GamePanel.ColumnDefinitions.Count);
                 GamePanel.RowDefinitions.RemoveRange(0, GamePanel.RowDefinitions.Count);
@@ -116,6 +124,18 @@ namespace GameUI_Wpf
             {
                 GamePanel.RowDefinitions.Add(new RowDefinition());
             }
+        }
+
+        private void OnTextInputKeyDown(object sender, KeyEventArgs e)
+        {
+            _engine.Direction = e.Key switch
+            {
+                Key.Up => Direction.Up,
+                Key.Right => Direction.Right,
+                Key.Left => Direction.Left,
+                Key.Down => Direction.Down,
+                _ => _engine.Direction
+            };
         }
     }
 }
