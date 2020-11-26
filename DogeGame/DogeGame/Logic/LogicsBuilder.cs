@@ -64,29 +64,30 @@ namespace DogeGameLogics.Logic
 
         private IEnumerable<Position> TraversBoarder()
         {
+            int delta = (int)Math.Max((_heigth + _width) * 2.0 / _numberOfEnemies, 3);
             Position p = new Position { Height = 0, Width = 0 };
             yield return p;
-            while (p.Width + 3 < _width)
+            while (p.Width + delta < _width)
             {
-                p = new Position {Height = 0, Width = p.Width + 3 };
+                p = new Position {Height = 0, Width = p.Width + delta };
                 yield return p;
             }
 
-            while (p.Height + 3 < _heigth)
+            while (p.Height + delta < _heigth)
             {
-                p = new Position { Height = p.Height  + 3 , Width = _width-1 };
+                p = new Position { Height = p.Height  + delta, Width = _width-1 };
                 yield return p;
             }
 
-            while (p.Width - 3 >= 0)
+            while (p.Width - delta >= 0)
             {
-                p = new Position { Height = _heigth -1, Width = p.Width -3 };
+                p = new Position { Height = _heigth -1, Width = p.Width - delta };
                 yield return p;
             }
 
-            while (p.Height - 3 > 0)
+            while (p.Height - delta > 0)
             {
-                p = new Position { Height = p.Height - 3, Width = 0 };
+                p = new Position { Height = p.Height - delta, Width = 0 };
                 yield return p;
             }
         }

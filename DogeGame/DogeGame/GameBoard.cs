@@ -11,6 +11,8 @@ namespace DogeGameLogics
 {
     public class GameBoard
     {
+        public event EventHandler<PiecesMoveArgs> OnPieceMove = (a,b)=> { };
+
         private GameLogics Logics { get; init; }
         private Piece _player;
         private ICollection<Piece> _enemies;
@@ -54,11 +56,11 @@ namespace DogeGameLogics
         public void Update(Direction playersDirection)
         {
             _player.Update(_player, playersDirection);
-            foreach(var enemy in _enemies)
+            foreach (var enemy in _enemies)
             {
                 enemy.Update(_player, playersDirection);
             }
-
+            OnPieceMove(this, new PiecesMoveArgs(_player, _enemies));
             Logics.Validate(_player, _enemies);
         }
     }

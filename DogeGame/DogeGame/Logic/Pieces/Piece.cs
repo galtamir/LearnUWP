@@ -1,14 +1,29 @@
 ﻿using DogeGame;
 using DogeGameLogics;
 using DogeGameLogics.Logic.PositionTarsformers;
+using System;
 
 namespace DogeGameLogics.Logic.Pieces
 {
     public abstract class Piece
     {
+        public event EventHandler<PieceMoveArgs> OnPieceMove = (a, b) => { };
+
         public int ID { get; init; }
 
-        public Position Position { get; protected set; }
+        private Position _position;
+        public Position Position 
+        {
+            get
+            {
+                return _position;
+            } 
+            protected set
+            {
+                OnPieceMove(ID, new PieceMoveArgs(_position, value));
+                _position = value;
+            }
+        }
 
         public abstract void Update(Piece player, Direction playersDirection);
 
