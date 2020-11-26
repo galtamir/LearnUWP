@@ -1,5 +1,4 @@
-﻿using DogeGame;
-using DogeGameLogics;
+﻿using DogeGameLogics;
 
 namespace DogeGameLogics.Logic.PositionTarsformers
 {

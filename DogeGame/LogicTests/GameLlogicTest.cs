@@ -19,7 +19,7 @@ namespace LogicTests
                 .SetWidth(70)
                 .Cyclic(true)
                 .NumberOfEnemies(5)
-                .Build();
+                .BuildLogics();
             Assert.AreEqual(50, g.BoardHiegth);
             Assert.AreEqual(70, g.BoardWidth);
             Assert.AreEqual(5, g.CreateEnemies().Count);

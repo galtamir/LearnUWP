@@ -1,5 +1,4 @@
-﻿using DogeGame;
-
+﻿
 namespace DogeGameLogics.Logic.PositionTarsformers
 {
     public class NonCyclicTarsformer : IPositionTarsformer

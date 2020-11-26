@@ -23,7 +23,7 @@ namespace DogeGameLogics.Logic
             
         }
 
-        public GameLogics Build()
+        public GameLogics BuildLogics()
         {
             if(playerPosition == null)
             {

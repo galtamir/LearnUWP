@@ -23,9 +23,9 @@
             <TextBlock Text="Settings" FontSize="42" HorizontalAlignment="Center" />
             <TextBlock/>
             <TextBlock Text="Height" Margin="10"/>
-            <Slider x:Name="HeigthSlider" Minimum="10" Maximum="1000" Margin="10"/>
+            <Slider x:Name="HeigthSlider" Minimum="10" Maximum="100" Margin="10"/>
             <TextBlock Text="Width" Margin="10"/>
-            <Slider x:Name="WidthSlider" Minimum="10" Maximum="1000" Margin="10"/>
+            <Slider x:Name="WidthSlider" Minimum="10" Maximum="100" Margin="10"/>
             <TextBlock/>
             <CheckBox x:Name="CyclicCheckBox" Content="Is Cyclic" Margin="10" IsChecked="True"/>
         </StackPanel>

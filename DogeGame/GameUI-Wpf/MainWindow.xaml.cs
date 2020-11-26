@@ -42,12 +42,13 @@ namespace GameUI_Wpf
                 SetHeigth(heigth).
                 SetWidth(width).
                 Cyclic(CyclicCheckBox.IsChecked.Value).
-                Build().GenerateBoard();
-            board.OnPieceMove += Board_OnPieceMove;
+                BuildLogics().GenerateBoard();
+
+            board.OnPieceMove += OnPieceMove;
 
             CreatePlayers(board.State);
             
-            var engine = new GameEngine(board, 800);
+            var engine = new GameEngine(board, 1800);
 
             await engine.StartGame();
         }
@@ -61,8 +62,8 @@ namespace GameUI_Wpf
                 var position = state[id];
                 Ellipse e = new Ellipse();
                 e.Height = 50; e.Width = 50;
-                e.HorizontalAlignment = HorizontalAlignment.Stretch;
-                e.VerticalAlignment = VerticalAlignment.Stretch;
+                e.HorizontalAlignment = HorizontalAlignment.Center;
+                e.VerticalAlignment = VerticalAlignment.Center;
                 GamePanel.Children.Add(e);
                 Grid.SetColumn(e, position.Width);
                 Grid.SetRow(e, position.Height);
@@ -79,7 +80,7 @@ namespace GameUI_Wpf
             }
         }
 
-        private void Board_OnPieceMove(object sender, PiecesMoveArgs e)
+        private void OnPieceMove(object sender, PiecesMoveArgs e)
         {
             foreach (var item in _livePieces.Keys)
             {

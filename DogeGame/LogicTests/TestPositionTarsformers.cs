@@ -1,4 +1,3 @@
-using DogeGame;
 using DogeGameLogics.Logic;
 using DogeGameLogics.Logic.PositionTarsformers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
