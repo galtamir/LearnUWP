@@ -15,9 +15,9 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="GamePanel" KeyDown = "OnTextInputKeyDown">
-            
-        </Grid>
+        <Border BorderThickness="2" BorderBrush="Black" Margin="5">
+            <Canvas x:Name="GamePanel" SizeChanged="GamePanel_SizeChanged" />
+        </Border>
         <Button Grid.Row="1"  Content="New Game" Click="CreateNewGame"/>
         <StackPanel Grid.Column="1" x:Name="Settings">
             <TextBlock Text="Settings" FontSize="42" HorizontalAlignment="Center" />

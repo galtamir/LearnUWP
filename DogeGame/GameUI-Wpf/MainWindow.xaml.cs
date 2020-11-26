@@ -24,6 +24,7 @@ namespace GameUI_Wpf
     {
         private Dictionary<int, Shape> _livePieces;
         private GameEngine _engine;
+        private ToCanvasTramsformer _tramsformer;
 
         public MainWindow()
         {
@@ -35,8 +36,8 @@ namespace GameUI_Wpf
 
             int heigth = (int)HeigthSlider.Value;
             int width = (int)WidthSlider.Value;
+            _tramsformer = new ToCanvasTramsformer(HeigthSlider.Value, WidthSlider.Value, GamePanel.ActualHeight, GamePanel.ActualWidth);
             ClrearBoard();
-            CreateBoard(heigth, width);
 
             var board = GameLogics.LogicsBuilder().
                 SetHeigth(heigth).
@@ -47,10 +48,7 @@ namespace GameUI_Wpf
             board.OnPieceMove += OnPieceMove;
 
             CreatePlayers(board.State);
-            if(_engine != null)
-            {
-                _engine.Cancel();
-            }
+
             _engine = new GameEngine(board, (int)Speed.Value);
 
             await _engine.StartGame();
@@ -64,12 +62,12 @@ namespace GameUI_Wpf
             {
                 var position = state[id];
                 Shape e = new Ellipse();
-                e.Height = 50; e.Width = 50;
-                e.HorizontalAlignment = HorizontalAlignment.Center;
-                e.VerticalAlignment = VerticalAlignment.Center;
+                e.Height = 10; e.Width = 10;
+
                 GamePanel.Children.Add(e);
-                Grid.SetColumn(e, position.Width);
-                Grid.SetRow(e, position.Height);
+                Canvas.SetLeft(e, _tramsformer.ToLeft(position.Width));
+                Canvas.SetTop(e, _tramsformer.ToTop(position.Height));
+
                 if (id < 0) // player
                 {
                     e.Fill = new SolidColorBrush(Color.FromRgb(255, 0, 0));
@@ -89,8 +87,8 @@ namespace GameUI_Wpf
             {
                 if (e.Positions.ContainsKey(item))
                 {
-                    Grid.SetColumn(_livePieces[item], e.Positions[item].Width);
-                    Grid.SetRow(_livePieces[item], e.Positions[item].Height);
+                    Canvas.SetLeft(_livePieces[item], _tramsformer.ToLeft(e.Positions[item].Width));
+                    Canvas.SetTop(_livePieces[item], _tramsformer.ToTop(e.Positions[item].Height));
                 }
                 else
                 {
@@ -106,23 +104,9 @@ namespace GameUI_Wpf
                 {
                     GamePanel.Children.Remove(item);
                 }
-            if (GamePanel.ColumnDefinitions.Count > 0)
+            if (_engine != null)
             {
-                GamePanel.ColumnDefinitions.RemoveRange(0, GamePanel.ColumnDefinitions.Count);
-                GamePanel.RowDefinitions.RemoveRange(0, GamePanel.RowDefinitions.Count);
-            }
-
-        }
-
-        private void CreateBoard(int higth, int width)
-        {
-            for (int i = 0; i < width; i++)
-            {
-                GamePanel.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            for (int i = 0; i < higth; i++)
-            {
-                GamePanel.RowDefinitions.Add(new RowDefinition());
+                _engine.Cancel();
             }
         }
 
@@ -136,6 +120,12 @@ namespace GameUI_Wpf
                 Key.Down => Direction.Down,
                 _ => _engine.Direction
             };
+        }
+
+        private void GamePanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+            _tramsformer = new ToCanvasTramsformer(HeigthSlider.Value, WidthSlider.Value, e.NewSize.Height, e.NewSize.Width);
         }
     }
 }
