@@ -28,12 +28,12 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Content="New Game" Grid.Column="0" Click="CreateNewGame" Margin="5"/>
+                <Button Content="New Game" Grid.Column="0" Click="CreateNewGame" Margin="5" Background="Beige"/>
                 <Button Content="Save Game" Grid.Column="1" Click="SaveGame" Margin="5"/>
                 <Button Content="Load Game" Grid.Column="2" Click="LoadGame" Margin="5"/>
                 <Button Grid.Column="3" Click="PausePlayGame" Margin="5">
                     <Button.Content>
-                        <Image Source="Images/Play.png"/>
+                        <Image Source="https://www.bridgeinit.org/wp-content/uploads/2018/04/PlayPause.png" />
                     </Button.Content>
                 </Button>
             </Grid>
