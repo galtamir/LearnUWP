@@ -157,7 +157,7 @@ namespace GameUI_Wpf
         private async void LoadGame(object sender, RoutedEventArgs e)
         {
             _engine?.Pause();
-            OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
             // Show save file dialog box
             var result = dlg.ShowDialog();
 

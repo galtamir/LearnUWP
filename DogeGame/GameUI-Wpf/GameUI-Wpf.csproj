@@ -8,11 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DogeGame\DogeGameLogics.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
+    <ProjectReference Include="..\DogeGame\DodgeGameLogics.csproj" />
   </ItemGroup>
 
   <ItemGroup>
