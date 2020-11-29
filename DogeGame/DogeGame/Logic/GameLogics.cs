@@ -11,6 +11,8 @@ namespace DogeGameLogics.Logic
         public int BoardHiegth { get; init; }
         public int BoardWidth { get; init; }
 
+        public bool IsBoardCyclic => _positionTarsformer is CyclicTarsformer;
+
         private Position _playerPosition;
         private IEnumerable<Position> _enemiesPositions;
         private IPositionTarsformer _positionTarsformer;

@@ -7,10 +7,10 @@ namespace GameUI_Wpf
         private double _heightOffset;
         private double _widthOffset;
 
-        public ToCanvasTramsformer(double heigth, double width, double canvasHeight, double canvasWidth)
+        public ToCanvasTramsformer(double objectSize, double matrixHeigth, double matrixWidth, double canvasHeight, double canvasWidth)
         {
-            _heightOffset = canvasHeight / (heigth);
-            _widthOffset = canvasWidth / (width);
+            _heightOffset = (canvasHeight - objectSize) / (matrixHeigth);
+            _widthOffset = (canvasWidth - objectSize) / (matrixWidth);
         }
 
         internal double ToLeft(int width)

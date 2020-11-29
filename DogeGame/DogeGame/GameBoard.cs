@@ -13,20 +13,20 @@ namespace DogeGameLogics
     {
         public event EventHandler<PiecesMoveArgs> OnPieceMove = (a,b)=> { };
 
-        private GameLogics Logics { get; init; }
+        private GameLogics _logics;
         private Piece _player;
         private ICollection<Piece> _enemies;
 
         public GameBoard(GameLogics gameLogics)
         {
-            Logics = gameLogics;
+            _logics = gameLogics;
             _player = gameLogics.CreatePlayer();
             _enemies = gameLogics.CreateEnemies();
         }
 
         public int[,] GetState()
         {
-            int[,] state = new int[Logics.BoardHiegth, Logics.BoardWidth];
+            int[,] state = new int[_logics.BoardHiegth, _logics.BoardWidth];
             state[_player.Position.Height, _player.Position.Width] = _player.ID;
             foreach( var enemy in _enemies)
             {
@@ -40,17 +40,30 @@ namespace DogeGameLogics
 
         public GameStatus GetGameStatus()
         {
-            if (Logics.IsWinningState(_player, _enemies))
+            if (_logics.IsWinningState(_player, _enemies))
             {
                 return GameStatus.Win;
             }
 
-            if (Logics.IsLosingState(_player, _enemies))
+            if (_logics.IsLosingState(_player, _enemies))
             {
                 return GameStatus.Lose;
             }
 
             return GameStatus.Playing;
+        }
+
+        public State SaveGame()
+        {
+            return new State
+            {
+                BoardWidth = _logics.BoardWidth,
+                BoardHeigth = _logics.BoardHiegth,
+                EnemyPositions = _enemies.Select(x=>x.Position),
+                IsBoardCyclic = _logics.IsBoardCyclic,
+                PlayerPosition = _player.Position
+
+            };
         }
 
         public void Update(Direction playersDirection)
@@ -61,7 +74,7 @@ namespace DogeGameLogics
                 enemy.Update(_player, playersDirection);
             }
             OnPieceMove(this, new PiecesMoveArgs(_player, _enemies));
-            Logics.Validate(_player, _enemies);
+            _logics.Validate(_player, _enemies);
         }
     }
 }

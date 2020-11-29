@@ -1,9 +1,12 @@
 ﻿using DogeGameLogics;
 using DogeGameLogics.Logic;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +25,7 @@ namespace GameUI_Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const int objectSize = 10;
         private Dictionary<int, Shape> _livePieces;
         private GameEngine _engine;
         private ToCanvasTramsformer _tramsformer;
@@ -36,14 +40,20 @@ namespace GameUI_Wpf
 
             int heigth = (int)HeigthSlider.Value;
             int width = (int)WidthSlider.Value;
-            _tramsformer = new ToCanvasTramsformer(HeigthSlider.Value, WidthSlider.Value, GamePanel.ActualHeight, GamePanel.ActualWidth);
-            ClrearBoard();
-
             var board = GameLogics.LogicsBuilder().
                 SetHeigth(heigth).
                 SetWidth(width).
                 Cyclic(CyclicCheckBox.IsChecked.Value).
+                NumberOfEnemies((int)Enemies.Value).
                 BuildLogics().GenerateBoard();
+            await StartGame(board);
+        }
+
+
+        private async Task StartGame(GameBoard board)
+        {
+            _tramsformer = new ToCanvasTramsformer(objectSize, HeigthSlider.Value, WidthSlider.Value, GamePanel.ActualHeight, GamePanel.ActualWidth);
+            ClrearBoard();
 
             board.OnPieceMove += OnPieceMove;
 
@@ -62,7 +72,7 @@ namespace GameUI_Wpf
             {
                 var position = state[id];
                 Shape e = new Ellipse();
-                e.Height = 10; e.Width = 10;
+                e.Height = objectSize; e.Width = objectSize;
 
                 GamePanel.Children.Add(e);
                 Canvas.SetLeft(e, _tramsformer.ToLeft(position.Width));
@@ -124,8 +134,51 @@ namespace GameUI_Wpf
 
         private void GamePanel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            _tramsformer = new ToCanvasTramsformer(objectSize ,HeigthSlider.Value, WidthSlider.Value, e.NewSize.Height, e.NewSize.Width);
+        }
+
+        private async void SaveGame(object sender, RoutedEventArgs e)
+        {
+            _engine?.Pause();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            // Show open file dialog box
+            var result = saveFileDialog.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                // Open document
+                string filename = saveFileDialog.FileName;
+                await File.WriteAllTextAsync(filename, _engine.SaveGame());
+            }
             
-            _tramsformer = new ToCanvasTramsformer(HeigthSlider.Value, WidthSlider.Value, e.NewSize.Height, e.NewSize.Width);
+        }
+
+        private async void LoadGame(object sender, RoutedEventArgs e)
+        {
+            _engine?.Pause();
+            OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            // Show save file dialog box
+            var result = dlg.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                var state = JsonSerializer.Deserialize<State>(
+                    await File.ReadAllTextAsync(dlg.FileName));
+                HeigthSlider.Value = state.BoardHeigth;
+                WidthSlider.Value = state.BoardWidth;
+                var board = GameLogics.
+                    LogicsBuilder().
+                    FromSate(state).
+                    GenerateBoard();
+                await StartGame(board);
+            }
+        }
+
+        private void PausePlayGame(object sender, RoutedEventArgs e)
+        {
+            _engine?.PausePlay();
         }
     }
 }

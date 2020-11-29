@@ -7,31 +7,53 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid KeyDown = "OnTextInputKeyDown" KeyUp="OnTextInputKeyDown">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="70"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Border BorderThickness="2" BorderBrush="Black" Margin="5">
-            <Canvas x:Name="GamePanel" SizeChanged="GamePanel_SizeChanged" />
-        </Border>
-        <Button Grid.Row="1"  Content="New Game" Click="CreateNewGame"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+        
+        
+            <Border BorderThickness="2" BorderBrush="Black" Margin="5">
+                <Canvas x:Name="GamePanel" SizeChanged="GamePanel_SizeChanged" />
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="New Game" Grid.Column="0" Click="CreateNewGame" Margin="5"/>
+                <Button Content="Save Game" Grid.Column="1" Click="SaveGame" Margin="5"/>
+                <Button Content="Load Game" Grid.Column="2" Click="LoadGame" Margin="5"/>
+                <Button Grid.Column="3" Click="PausePlayGame" Margin="5">
+                    <Button.Content>
+                        <Image Source="Images/Play.png"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
         <StackPanel Grid.Column="1" x:Name="Settings">
             <TextBlock Text="Settings" FontSize="42" HorizontalAlignment="Center" />
             <TextBlock/>
             <TextBlock Text="Height" Margin="10"/>
 
-            <Slider x:Name="HeigthSlider" Minimum="20" Maximum="50" Margin="10"/>
+            <Slider x:Name="HeigthSlider" Minimum="250" Maximum="500" Margin="10"/>
             <TextBlock Text="Width" Margin="10"/>
-            <Slider x:Name="WidthSlider" Minimum="20" Maximum="50" Margin="10"/>
+            <Slider x:Name="WidthSlider" Minimum="250" Maximum="500" Margin="10"/>
             <TextBlock/>
             <CheckBox x:Name="CyclicCheckBox" Content="Is Cyclic" Margin="10" IsChecked="True"/>
 
+            <TextBlock Text="Enemies" Margin="10"/>
+            <Slider x:Name="Enemies" Minimum="3" Maximum="20" Value="5" Margin="10"/>
+
             <TextBlock Text="Speed" Margin="10"/>
-            <Slider x:Name="Speed" Minimum="200" Maximum="1500" Margin="10"/>
+            <Slider x:Name="Speed" Minimum="20" Maximum="500" Value="50" Margin="10"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DogeGameLogics.Logic
 {
-    public readonly struct Position
+    public struct Position
     {
         public int Height { get; init; }
         public int Width { get; init; }

@@ -23,6 +23,10 @@ namespace DogeGameLogics.Logic
             
         }
 
+        public GameLogics FromSate(State State)
+        {
+            return new GameLogics(State.BoardHeigth, State.BoardWidth, State.IsBoardCyclic, State.PlayerPosition, State.EnemyPositions);
+        }
         public GameLogics BuildLogics()
         {
             if(playerPosition == null)
