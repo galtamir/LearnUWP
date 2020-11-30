@@ -1,8 +1,8 @@
-﻿using DogeGameLogics;
-using DogeGameLogics.Logic.PositionTarsformers;
+﻿using DodgeGameLogics;
+using DodgeGameLogics.Logic.PositionTarsformers;
 using System;
 
-namespace DogeGameLogics.Logic.Pieces
+namespace DodgeGameLogics.Logic.Pieces
 {
     public abstract class Piece
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace DogeGameLogics.Logic.PositionTarsformers
+namespace DodgeGameLogics.Logic.PositionTarsformers
 {
     public class NonCyclicTarsformer : IPositionTarsformer
     {

@@ -1,6 +1,6 @@
-﻿using DogeGameLogics.Logic.PositionTarsformers;
+﻿using DodgeGameLogics.Logic.PositionTarsformers;
 
-namespace DogeGameLogics.Logic.Pieces
+namespace DodgeGameLogics.Logic.Pieces
 {
     internal class Player : Piece
     {

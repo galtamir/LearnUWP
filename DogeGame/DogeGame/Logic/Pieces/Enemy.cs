@@ -1,7 +1,7 @@
-﻿using DogeGameLogics.Logic.PositionTarsformers;
+﻿using DodgeGameLogics.Logic.PositionTarsformers;
 using System;
 
-namespace DogeGameLogics.Logic.Pieces
+namespace DodgeGameLogics.Logic.Pieces
 {
     internal class Enemy : Piece
     {

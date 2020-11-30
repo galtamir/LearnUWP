@@ -1,5 +1,5 @@
-using DogeGameLogics.Logic;
-using DogeGameLogics.Logic.PositionTarsformers;
+using DodgeGameLogics.Logic;
+using DodgeGameLogics.Logic.PositionTarsformers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicTests

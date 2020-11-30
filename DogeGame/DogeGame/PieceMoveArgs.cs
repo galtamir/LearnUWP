@@ -1,7 +1,7 @@
-﻿using DogeGameLogics.Logic;
+﻿using DodgeGameLogics.Logic;
 using System;
 
-namespace DogeGameLogics
+namespace DodgeGameLogics
 {
     public class PieceMoveArgs : EventArgs
     {

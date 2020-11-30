@@ -9,8 +9,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DogeGameLogics;
-using DogeGameLogics.Logic;
+using DodgeGameLogics;
+using DodgeGameLogics.Logic;
 
 namespace FormsUI
 {

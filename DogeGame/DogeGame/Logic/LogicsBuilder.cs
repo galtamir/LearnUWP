@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DogeGameLogics.Logic
+namespace DodgeGameLogics.Logic
 {
     public class LogicsBuilder
     {

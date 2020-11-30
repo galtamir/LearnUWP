@@ -1,4 +1,4 @@
-﻿namespace DogeGameLogics
+﻿namespace DodgeGameLogics
 {
     public enum GameStatus
     {

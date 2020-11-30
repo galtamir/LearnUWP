@@ -1,9 +1,9 @@
-﻿using DogeGameLogics.Logic;
-using DogeGameLogics.Logic.Pieces;
+﻿using DodgeGameLogics.Logic;
+using DodgeGameLogics.Logic.Pieces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DogeGameLogics
+namespace DodgeGameLogics
 {
     public class PiecesMoveArgs
     {

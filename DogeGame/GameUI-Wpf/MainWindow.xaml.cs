@@ -1,5 +1,5 @@
-﻿using DogeGameLogics;
-using DogeGameLogics.Logic;
+﻿using DodgeGameLogics;
+using DodgeGameLogics.Logic;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;

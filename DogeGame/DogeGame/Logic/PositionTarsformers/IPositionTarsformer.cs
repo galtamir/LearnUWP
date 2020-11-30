@@ -1,6 +1,6 @@
-﻿using DogeGameLogics;
+﻿using DodgeGameLogics;
 
-namespace DogeGameLogics.Logic.PositionTarsformers
+namespace DodgeGameLogics.Logic.PositionTarsformers
 {
     public abstract class IPositionTarsformer
     {

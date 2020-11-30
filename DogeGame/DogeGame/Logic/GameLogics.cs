@@ -1,10 +1,10 @@
-﻿using DogeGameLogics.Logic.Pieces;
-using DogeGameLogics.Logic.PositionTarsformers;
+﻿using DodgeGameLogics.Logic.Pieces;
+using DodgeGameLogics.Logic.PositionTarsformers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DogeGameLogics.Logic
+namespace DodgeGameLogics.Logic
 {
     public class GameLogics
     {

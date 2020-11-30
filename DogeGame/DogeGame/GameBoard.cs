@@ -1,5 +1,5 @@
-﻿using DogeGameLogics.Logic;
-using DogeGameLogics.Logic.Pieces;
+﻿using DodgeGameLogics.Logic;
+using DodgeGameLogics.Logic.Pieces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DogeGameLogics
+namespace DodgeGameLogics
 {
     public class GameBoard
     {

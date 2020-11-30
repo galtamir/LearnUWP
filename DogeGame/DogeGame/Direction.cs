@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace DogeGameLogics
+namespace DodgeGameLogics
 {
     public enum Direction
     {

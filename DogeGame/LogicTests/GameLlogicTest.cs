@@ -1,4 +1,4 @@
-﻿using DogeGameLogics.Logic;
+﻿using DodgeGameLogics.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

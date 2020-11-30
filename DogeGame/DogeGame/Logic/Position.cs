@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DogeGameLogics.Logic
+namespace DodgeGameLogics.Logic
 {
     public struct Position
     {
